@@ -1,122 +1,178 @@
+@import "fonts/verdana.css";
+@import "fonts/ravie.css";
+
+:root {
+    --cor-do-texto: #333;
+    --bg-first: #f6f1b2;
+    --bg-second: #4599b2;
+    --car-first: #aac0ae;
+    --car-bg: rgba(255, 255, 255, 0.2);
+}
+
 /* EXERCÍCIO 1: fontes */
 /* importá-las aqui... e definir as `font-family` da turminha... */
 
+html {
+    font-family: "Verdana", sans-serif;
+}
+
+h1 {
+    font-family: "Ravie", sans-serif;
+}
 
 body {
-  background-color: #fff;
+    margin: 0;
+    background-color: #fff;
 }
 
 strong {
-  color: #d027aa;
+    color: #d027aa;
+}
+
+html,
+body,
+#recipiente {
+    min-height: 100vh;
 }
 
 #recipiente {
-  background-image: linear-gradient(to bottom, #f6f1b2, #4599b2 80%);
-  border-left: 1px solid #d3d3d3;
-  border-right: 1px solid #d3d3d3;
+    background-image: linear-gradient(
+        to bottom,
+        var(--bg-first),
+        var(--bg-second) 80%
+    );
+    border-left: 1px solid #d3d3d3;
+    border-right: 1px solid #d3d3d3;
+    width: 800px;
 }
 
 #cardapio {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-top: 1px solid #aac0ae;
-  border-bottom: 1px solid #aac0ae;
-  border-left: 1px solid #aac0ae;
+    background-color: var(--car-bg);
+    border-top: 1px solid var(--car-first);
+    border-bottom: 1px solid var(--car-first);
+    border-left: 1px solid var(--car-first);
+    padding: 20px;
 }
 
 #cardapio h3 {
-  font-size: 18px;
-  color: #333;
-  margin-top: 30px;
+    font-size: 18px;
+    color: var(--cor-do-texto);
+    margin-top: 30px;
 }
 
 #cardapio article {
-  font-size: 14px;
-  color: #333;
+    font-size: 14px;
+    color: var(--cor-do-texto);
 }
-
 
 /* EXERCÍCIO 2: layout da página */
 #recipiente {
-  /* layout da página aqui */
-  /* ... */
-  /* ... */
-  /* ... */
-  /* ... */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 154px auto;
+    grid-template-rows: 100px auto 100px;
+    grid-template-areas:
+        "header header2"
+        "main main2"
+        "footer footer2";
 }
 
 #cabecalho-pagina {
-
+    grid-area: header2;
 }
 
 #lateral {
-
+    grid-area: main;
+    grid-row-start: 1;
+    grid-row-end: 4;
 }
 
 #cardapio {
-
+    grid-area: main2;
 }
 
 #rodape-pagina {
-
+    grid-area: footer2;
 }
-
-
 
 /* EXERCÍCIO 3: cabeçalho da página */
 #cabecalho-pagina {
-
+    margin: 10px;
 }
 
 #cabecalho-pagina h1 {
-  margin: 0;
-  font-size: 36px;
-  color: #e90c0c;
-  font-weight: normal;
+    margin: 0;
+    font-size: 36px;
+    color: #e90c0c;
+    font-weight: normal;
 }
 
 #cabecalho-pagina h2 {
-  margin: 0;
-  font-size: 24px;
-  color: #333;
-  font-weight: normal;
+    margin: 0;
+    font-size: 24px;
+    color: var(--cor-do-texto);
+    font-weight: normal;
+    text-align: right;
 }
 
 /* EXERCÍCIO 4: cada item do menu */
 article {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2;
 }
-
 
 /* EXERCÍCIO 5: o rodapé */
 #rodape-pagina {
+    display: flex;
+    justify-content: flex-end;
+    padding: 46px 15px 25px;
 }
 
 /* EXERCÍCIO 6: lateral */
 #lateral {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
 
 /* EXERCÍCIO 7: o ticket */
 #ticket {
+    position: fixed;
+    left: -89px;
+    top: 50%;
+    height: 84px;
+    transition: left 0.5s ease-out;
 }
 
 #ticket:hover {
+    left: 0;
 }
-
 
 /* EXERCÍCIO 8: deslocamento no siri e peixe */
 #siri {
+    position: relative;
+    top: 17px;
+    left: -10px;
 }
 
 #peixe {
+    position: relative;
+    left: -44px;
 }
 
 /* EXERCÍCIO 9: bolhas - no HTML e no JS */
 /* --- */
 
-
 /* EXERCÍCIO 10: modo escuro */
 /* no início deste arquivo (depois dos @import), coloque
    as custom properties */
-/* coloque aqui a media query para sobrescrever o valor
-   das custom properties para o modo escuro */
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --cor-do-texto: #eee;
+        --bg-first: #008cff;
+        --bg-second: #003141;
+        --car-bg: #1a1c38;
+    }
+}
